@@ -665,6 +665,22 @@ window.addEventListener('load', () => {
                 window.scrollTo(0, 0);
             }
         });
+        /* --------------------------------------------------------- */
+/* 로고 클릭 시: 위로 부드럽게 이동 후 자동 새로고침 기능        */
+/* --------------------------------------------------------- */
+const logoElement = document.querySelector('.logo');
+
+if (logoElement) {
+    logoElement.onclick = function() {
+        // 1. 위로 올라가는 '모션' (이건 잘 작동함)
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+
+        // 2. 0.6초 뒤에 '새로고침' 실행 (이게 사진에서 빠져있던 핵심 코드입니다!)
+        setTimeout(() => {
+            window.location.href = window.location.pathname; 
+        }, 600); // 600은 0.6초를 기다린다는 뜻입니다.
+    };
+}
     </script>
 </body>
 </html>
